@@ -42,10 +42,10 @@ for h, cnt in enumerate(contours):
         print x0, y0, x1, y1
         
         draw.rectangle((x0, y0, x1, y1))
-        draw.line(((x0+x1)/2, y0, (x0+x1)/2, y1), 
-                  fill=(255,255,255), width=1)
-        draw.line(((x0,(y0+y1)/2, x1,(y0+y1)/2)), 
-                  fill=(255,255,255), width=1)
+        #draw.line(((x0+x1)/2, y0, (x0+x1)/2, y1), 
+        #          fill=(255,255,255), width=1)
+        #draw.line(((x0,(y0+y1)/2, x1,(y0+y1)/2)), 
+        #          fill=(255,255,255), width=1)
         
         seperated_area = f.crop((x0-margin, y0-margin, 
                                  x1+margin, y1+margin))
