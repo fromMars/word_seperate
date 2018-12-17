@@ -1,1 +1,4 @@
 use opencv algorithm to seperate every word in LantingXu.jpg
+
+dependencies:
+	opencv-python, pillow

@@ -1,26 +1,27 @@
-import cv
+#import cv
 import cv2
 import numpy as np
-import Image
-import ImageDraw
+from PIL import Image
+from PIL import ImageDraw
 
 
+img_name='S28BW-818121610180.jpg'
 kernel = np.ones((8, 8), np.uint8)
 kernel1 = np.ones((2, 2), np.uint8)
-img = cv2.imread('LantingXu.jpg')
+img = cv2.imread(img_name)
 imgray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
 
-ret,th1 = cv2.threshold(imgray, 64, 255, cv2.THRESH_BINARY)
+ret,th1 = cv2.threshold(imgray, 200, 255, cv2.THRESH_BINARY)
 th1 = cv2.morphologyEx(th1, cv2.MORPH_OPEN, kernel)
 th1 = cv2.morphologyEx(th1, cv2.MORPH_ERODE, kernel1)
-ret,th1 = cv2.threshold(th1, 64, 255, cv2.THRESH_BINARY_INV)
+ret,th1 = cv2.threshold(th1, 200, 255, cv2.THRESH_BINARY_INV)
 
-contours, hierarchy = cv2.findContours(th1, cv2.RETR_TREE, 
+something, contours, hierarchy = cv2.findContours(th1, cv2.RETR_TREE, 
                                        cv2.CHAIN_APPROX_SIMPLE)
 
 
-f = Image.open("LantingXu.jpg")
+f = Image.open(img_name)
 total = len(contours)
 draw = ImageDraw.Draw(f)
 
